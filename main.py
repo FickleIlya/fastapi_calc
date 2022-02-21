@@ -30,11 +30,6 @@ async def calc(expression: str):
                     'response': str(round(num, 3)),
                     'status': status})
 
-        if len(res) > 30:
-            del res[0]
-
-        return answer
-
     else:
         status = 'fail'
         answer = {expression: ''}
@@ -42,10 +37,10 @@ async def calc(expression: str):
                     'response': '',
                     'status': status})
 
-        if len(res) > 30:
-            del res[0]
+    if len(res) > 30:
+        del res[0]
 
-        return answer
+    return answer
 
 
 @app.get('/history')
